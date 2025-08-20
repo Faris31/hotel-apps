@@ -34,6 +34,14 @@ Route::get('login', [\App\Http\Controllers\LoginController::class, 'index']);
 Route::get('login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
 Route::post('login_action', [\App\Http\Controllers\LoginController::class, 'loginAction'])->name('login_action');
 
+// route untuk user
+Route::resource('user', \App\Http\Controllers\UserController::class);
 
-// route 
+// route dashboard
 Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
+
+// route categories
+Route::resource('categories', \App\Http\Controllers\CategoriesController::class);
+
+//route rooms
+Route::resource('room', \App\Http\Controllers\RoomController::class);

@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         //seader adalah data dumy, yaitu dimana data nya sudah ditentukan diaawal
 
-        $this->call(UserSeeder::class);
+        $this->call([UserSeeder::class, CategoriesSeeder::class]);
     }
 }
