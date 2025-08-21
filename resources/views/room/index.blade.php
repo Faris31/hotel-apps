@@ -23,13 +23,13 @@
                     </thead>
                     <tbody>
                         @foreach ($datas as $index => $data )
-                        <tr class="text-center align-content-center">
-                            <td>{{ $index += 1 }}</td>
-                            <td>{{ $data->name }}</td>
-                            <td>{{ $data->category->name }}</td>
-                            <td>{{ $data->name }}</td>
-                            <td>{{ number_format($data->price) }}</td>
-                            <td>
+                        <tr class="text-center">
+                            <td class="align-content-center">{{ $index += 1 }}</td>
+                            <td><img width="150" src="{{ asset('storage/' . $data->image_cover) }}" alt=""></td>
+                            <td class="align-content-center">{{ $data->category->name }}</td>
+                            <td class="align-content-center">{{ $data->name }}</td>
+                            <td class="align-content-center">{{ number_format($data->price) }}</td>
+                            <td class="align-content-center">
                                 <a href="{{route('room.edit', $data->id)}}" class="btn btn-success">Edit</a>
                                 <form action="{{route('room.destroy', $data->id)}}" method="post" class="d-inline">
                                     @csrf
