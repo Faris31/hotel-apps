@@ -1,6 +1,6 @@
 <?php
 
-use Faker\Guesser\Name;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,3 +45,6 @@ Route::resource('categories', \App\Http\Controllers\CategoriesController::class)
 
 //route rooms
 Route::resource('room', \App\Http\Controllers\RoomController::class);
+
+// route guest
+Route::resource('guest', \App\Http\Controllers\GuestController::class);

@@ -88,6 +88,13 @@
         </ul>
       </li><!-- End Components Nav -->
 
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('guest.index') }}">
+          <i class="bi bi-person"></i>
+          <span>Guest Information</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
