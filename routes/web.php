@@ -48,3 +48,7 @@ Route::resource('room', \App\Http\Controllers\RoomController::class);
 
 // route guest
 Route::resource('guest', \App\Http\Controllers\GuestController::class);
+
+// route reservaation
+Route::resource('reservation', \App\Http\Controllers\ReservationController::class);
+Route::get('get-room-by-category/{id}', [\App\Http\Controllers\ReservationController::class, 'getRoomByCategory'])->name('get-room-by-category');

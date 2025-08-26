@@ -93,7 +93,17 @@
           <i class="bi bi-person"></i>
           <span>Guest Information</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li>
+      <!-- End Profile Page Nav -->
+
+      {{-- reservation --}}
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('reservation.index') }}">
+          <i class="bi bi-calendar"></i>
+          <span>Reservation</span>
+        </a>
+      </li>
+      <!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
