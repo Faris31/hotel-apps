@@ -34,18 +34,35 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
+        // $reservation_number = "RSV-270893-001";
         try {
-            $data = $request->validate([
-                'guest_name' => 'required',
-                'guest_email' => 'required|email',
-                'guest_phone' => 'required',
-                'guest_note' => 'nullable|string',
-                'guest_room_number' => 'nullable|string',
-                'guest_check_in' => 'required|date',
-                'guest_check_out' => 'required|date|after:checkin',
-                'payment_method' => 'required',
-                'room_id' => 'required',
-            ]);
+            // $data = $request->validate([
+            //     'reservation_number' => 'required',
+            //     'guest_name' => 'required',
+            //     'guest_email' => 'required|email',
+            //     'guest_phone' => 'required',
+            //     'guest_note' => 'nullable|string',
+            //     'guest_room_number' => 'nullable|string',
+            //     'guest_checkin' => 'required|date',
+            //     'guest_checkout' => 'required|date|after:guest_checkin',
+            //     'payment_method' => 'required',
+            //     'room_id' => 'required',
+            // ]);
+
+            $data = [
+                'reservation_number' => $request->reservation_number,
+                'guest_name' => $request->guest_name,
+                'guest_email' => $request->guest_email,
+                'guest_phone' => $request->guest_phone,
+                'guest_note' => $request->guest_note,
+                'guest_room_number' => $request->guest_room_number,
+                'guest_checkin' => $request->guest_check_in,
+                'guest_checkout' => $request->guest_check_out,
+                'payment_method' => $request->payment_method,
+                'room_id' => $request->room_id,
+                'subtotal' => $request->subtotal,
+                'totalAmount' => $request->totalAmount,
+            ];
             $create = Reservations::create($data);
             return response()->json(['status', 'message' => 'Reservation create success', 'data' => $create], 201);
         } catch (\Illuminate\Validation\ValidationException $e) {

@@ -18,6 +18,10 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
+                                <label for="reservation_number" class="form-label">Nomor Reservation *</label>
+                                <input type="text" class="form-control" name="reservation_number" placeholder="silahkan masukan nama tamu" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="guest_name" class="form-label">Nama Tamu *</label>
                                 <input type="text" class="form-control" name="guest_name" placeholder="silahkan masukan nama tamu" required>
                             </div>
@@ -49,7 +53,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Metode Bayar *</label>
-                                <select name="guest_room_number" id="" class="form-select">
+                                <select name="payment_method" id="" class="form-select">
                                     <option value="">Pilih Metode Bayar</option>
                                         <option value="cc">Credit Card</option>
                                         <option value="cash">Cash</option>
@@ -65,7 +69,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="guest_qty" class="form-label">Jumlah Tamu </label>
-                                <select name="" id="" class="form-select">
+                                <select name="guest_qty" id="" class="form-select">
                                     <option value="">-- Jumlah Tamu --</option>
                                     <option value="1">1 Tamu</option>
                                     <option value="2">2 Tamu</option>
@@ -93,6 +97,7 @@
                                     <div class="mb-3 mb-3 d-flex justify-content-between">
                                         <span>Harga Kamar (per malam)</span>
                                         <span id="roomRate">Rp. 0</span>
+                                        <input type="hidden" id="roomRateVal">
                                     </div>
                                     <div class="mb-3 d-flex justify-content-between">
                                         <span>Berapa Malam</span>
@@ -101,14 +106,17 @@
                                     <div class="mb-3 d-flex justify-content-between">
                                         <span>Subtotal</span>
                                         <span id="subtotal">Rp. 0</span>
+                                        <input type="hidden" id="subtotalVal">
                                     </div>
                                     <div class="mb-3 d-flex justify-content-between border-bottom">
                                         <span>Tax</span>
                                         <span id="tax">Rp. 0</span>
+                                        <input type="hidden" id="taxVal">
                                     </div>
                                     <div class="mb-3 d-flex justify-content-between">
                                         <span><strong>Grandtotal</strong></span>
                                         <span id="totalAmount"><strong>Rp. 0</strong></span>
+                                        <input type="hidden" id="totalAmountVal">
                                     </div>
                                     
                                 </div>

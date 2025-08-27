@@ -147,6 +147,7 @@
       roomRateText.textContent = rupiahFormat(roomRate);
 
       calculateTotal();
+      document.getElementById('roomRateVal').value = roomRate;
     });
 
     const checkInInput = document.getElementById('checkin');
@@ -169,6 +170,11 @@
         taxText.textContent = rupiahFormat(tax);
         totalAmountText.textContent = rupiahFormat(grandTotal);
 
+        document.getElementById('subtotalVal').value = subTotal;
+        document.getElementById('taxVal').value = tax;
+        document.getElementById('totalAmountVal').value = grandTotal;
+
+
       };
     };
 
@@ -184,33 +190,45 @@
       const guest_note = document.querySelector('textarea[name="guest_note"]').value;
       const guest_check_in = document.querySelector('input[name="guest_check_in"]').value;
       const guest_check_out = document.querySelector('input[name="guest_check_out"]').value;
-      const payment_method = document.querySelector('input[name="payment_method"]').value;
-      const token = document.querySelector("meta[name='csrf-token']")
-      
+      const guest_qty = document.querySelector('select[name="guest_qty"]').value;
+      const payment_method = document.querySelector('select[name="payment_method"]').value;
+      const subtotal = document.querySelector('#subtotalVal').value;
+      const night = document.querySelector('#totalNight').value;
+      const tax = document.querySelector('#taxVal').value;
+      const totalAmount = document.querySelector('#totalAmountVal').value;
+      const token = document.querySelector("meta[name='csrf-token']").getAttribute('content');
+      const reservation_number = "RSV-270893-001";
+     
       const data = {
-        guest_name: guest_name;
-        guest_email: guest_email;
-        guest_phone: guest_phone;
-        guest_note: guest_note;
-        guest_room_number: guest_room_number;
-        guest_check_in: guest_check_in;
-        guest_check_out: guest_check_out;
-        payment_method: payment_method;
-        room_id: room_id; 
-      }
+        guest_name: guest_name,
+        guest_email: guest_email,
+        guest_phone: guest_phone,
+        room_id: room_id, 
+        guest_room_number: guest_room_number,
+        guest_note: guest_note,
+        guest_check_in: guest_check_in,
+        guest_check_out: guest_check_out,
+        guest_qty: guest_qty,
+        payment_method: payment_method,
+        subtotal: subtotal.replace('/[^\d]/g', ''),
+        total_Night: night,
+        tax: tax,
+        totalAmount: totalAmount,
+        reservation_number: reservation_number
+        
+      };
 
       try {
         const res = await fetch(`/reservation`, {
           method: "POST",
-          header: {
-            "Content-Type":"aplication/json",
-            "Accept":"aplication/json",
-            "X-CSRF-TOKEN": token
+          headers: {
+            "Content-Type":"application/json",
+            "Accept":"application/json",
+            "X-CSRF-TOKEN": token,
           },
-          body:
-            JSON.stringify(data)
+          body: JSON.stringify(data)
         });
-        const data = await res.json();
+        const ResponData  = await res.json();
         if(res.ok){
           alert('Success');
         }
