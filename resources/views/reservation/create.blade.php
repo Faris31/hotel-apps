@@ -19,7 +19,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="guest_name" class="form-label">Nama Tamu *</label>
-                                <input type="text" class="form-control" name="gues_name" placeholder="silahkan masukan nama tamu" required>
+                                <input type="text" class="form-control" name="guest_name" placeholder="silahkan masukan nama tamu" required>
                             </div>
                             <div class="mb-3">
                                 <label for="guest_phone" class="form-label">Telepon / Hp</label>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                                <button class="btn btn-primary" type="submit" name="simpan">Submit</button>
+                                <button class="btn btn-primary" type="button" name="simpan" id="save">Submit</button>
                                 <a href="{{url()->previous()}}" class="text-muted">Kembali</a>
                         </div>
                     </div>

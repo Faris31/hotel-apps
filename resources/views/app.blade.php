@@ -144,6 +144,8 @@
       const selectedOption = this.options[this.selectedIndex];
       roomRate = selectedOption.getAttribute('data-price') || 0;
       roomRateText.textContent = rupiahFormat(roomRate);
+
+      calculateTotal();
     });
 
     const checkInInput = document.getElementById('checkin');
@@ -171,6 +173,19 @@
 
     checkInInput.addEventListener('change', calculateTotal);
     checkOutInput.addEventListener('change', calculateTotal);
+
+    document.getElementById('save').addEventListener('click', function(){
+      const guest_name = document.querySelector('input[name="guest_name"]').value;
+      const guest_email = document.querySelector('input[name="guest_email"]').value;
+      const guest_phone = document.querySelector('input[name="guest_phone"]').value;
+      const room_id = document.querySelector('#room_id').value;
+      const guest_room_number = document.querySelector('select[name="guest_room_number"]').value;
+      const guest_note = document.querySelector('textarea[name="guest_note"]').value;
+      const guest_check_in = document.querySelector('input[name="guest_check_in"]').value;
+      const guest_check_out = document.querySelector('input[name="guest_check_out"]').value;
+      const payment_method = document.querySelector('input[name="payment_method"]').value;
+
+    });
   </script>
 
 </body>
