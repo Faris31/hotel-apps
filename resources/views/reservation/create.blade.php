@@ -44,6 +44,10 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="" class="form-label">Check-In *</label>
+                                <input type="date" class="form-control" name="guest_check_in" id="checkin" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Metode Bayar *</label>
                                 <select name="guest_room_number" id="" class="form-select">
                                     <option value="">Pilih Metode Bayar</option>
@@ -52,10 +56,6 @@
                                         <option value="bank">Bank Transfer</option>
                                 </select>
                             </div>
-                            {{-- <div class="mb-3">
-                                <label for="" class="form-label">Check-In *</label>
-                                <input type="date" class="form-control" name="check_out" required>
-                            </div> --}}
                         </div>
 
                         <div class="col-lg-6">
@@ -83,6 +83,10 @@
                                 <label for="guest_note" class="form-label">Special Request / Note *</label>
                                 <textarea name="guest_note" id="" class="form-control" rows=""></textarea>
                             </div>
+                            <div class="mb-3">
+                               <label for="" class="form-label">Check-Out *</label>
+                               <input type="date" class="form-control" name="guest_check_out" id="checkout" required>
+                           </div>
                             <div class="card bg-light">
                                 <div class="card-body">
                                     <h6 class="card-title">Rangkuman Pembayaran</h6>
@@ -96,19 +100,19 @@
                                     </div>
                                     <div class="mb-3 d-flex justify-content-between">
                                         <span>Subtotal</span>
+                                        <span id="subtotal">Rp. 0</span>
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-between border-bottom">
+                                        <span>Tax</span>
                                         <span id="tax">Rp. 0</span>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-between">
-                                        <span>Grandtotal</span>
-                                        <span id="totalAmound">Rp. 0</span>
+                                        <span><strong>Grandtotal</strong></span>
+                                        <span id="totalAmount"><strong>Rp. 0</strong></span>
                                     </div>
                                     
                                 </div>
                             </div>
-                             {{-- <div class="mb-3">
-                                <label for="" class="form-label">Check-Out *</label>
-                                <input type="date" class="form-control" name="check_out" required>
-                            </div> --}}
                         </div>
                         <div class="mb-3">
                                 <button class="btn btn-primary" type="submit" name="simpan">Submit</button>

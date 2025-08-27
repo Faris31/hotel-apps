@@ -95,14 +95,24 @@
   <script>
     // variable
     // let, var, const
+    const rupiahFormat = (value) => {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR"
+      }).format(value);
+    };
+
     let category_id = document.getElementById('category_id');
     let roomId = document.getElementById('room_id');
+    const roomRateText = document.getElementById('roomRate');
+    const totalNightText = document.getElementById('totalNight');
+    const subtotalText = document.getElementById('subtotal');
+    const taxText = document.getElementById('tax');
+    const totalAmountText = document.getElementById('totalAmount');
 
-    console.log(roomId);
-    
-
-    
-
+    let roomRate = 0;
+        
+    // console.log(roomId);
     category_id.addEventListener('change', async function(){
       const id_category = this.value;
 
@@ -132,13 +142,35 @@
 
     roomId.addEventListener('change', function(){
       const selectedOption = this.options[this.selectedIndex];
-      const price = selectedOption.getAttribute('data-price') || 0;
-      const rupiah = new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR"
-      }).format(price);
-      document.getElementById('roomRate').textContent = rupiah;
+      roomRate = selectedOption.getAttribute('data-price') || 0;
+      roomRateText.textContent = rupiahFormat(roomRate);
     });
+
+    const checkInInput = document.getElementById('checkin');
+    const checkOutInput = document.getElementById('checkout');
+
+    function calculateTotal(){
+      const checkin = new Date(checkInInput.value);
+      const checkout = new Date(checkOutInput.value);
+
+      if(checkin && checkout && checkout > checkin){
+        const timeDiff = checkout - checkin;
+        const night = timeDiff / (1000 * 60 * 60 * 24); // 86.400.000
+
+        const subTotal = roomRate * night;
+        const tax = subTotal * 0.1;
+        const grandTotal = subTotal + tax;
+
+        totalNightText.textContent = night;
+        subtotalText.textContent = rupiahFormat(subTotal);
+        taxText.textContent = rupiahFormat(tax);
+        totalAmountText.textContent = rupiahFormat(grandTotal);
+
+      };
+    };
+
+    checkInInput.addEventListener('change', calculateTotal);
+    checkOutInput.addEventListener('change', calculateTotal);
   </script>
 
 </body>
