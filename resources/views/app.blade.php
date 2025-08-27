@@ -8,6 +8,7 @@
   <title>{{$title ?? 'Management Hotel'}}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <meta name="csrf-token" content="{{csrf_token()}}">
 
   <!-- Favicons -->
   <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
@@ -174,7 +175,7 @@
     checkInInput.addEventListener('change', calculateTotal);
     checkOutInput.addEventListener('change', calculateTotal);
 
-    document.getElementById('save').addEventListener('click', function(){
+    document.getElementById('save').addEventListener('click', async function(){
       const guest_name = document.querySelector('input[name="guest_name"]').value;
       const guest_email = document.querySelector('input[name="guest_email"]').value;
       const guest_phone = document.querySelector('input[name="guest_phone"]').value;
@@ -184,7 +185,39 @@
       const guest_check_in = document.querySelector('input[name="guest_check_in"]').value;
       const guest_check_out = document.querySelector('input[name="guest_check_out"]').value;
       const payment_method = document.querySelector('input[name="payment_method"]').value;
+      const token = document.querySelector("meta[name='csrf-token']")
+      
+      const data = {
+        guest_name: guest_name;
+        guest_email: guest_email;
+        guest_phone: guest_phone;
+        guest_note: guest_note;
+        guest_room_number: guest_room_number;
+        guest_check_in: guest_check_in;
+        guest_check_out: guest_check_out;
+        payment_method: payment_method;
+        room_id: room_id; 
+      }
 
+      try {
+        const res = await fetch(`/reservation`, {
+          method: "POST",
+          header: {
+            "Content-Type":"aplication/json",
+            "Accept":"aplication/json",
+            "X-CSRF-TOKEN": token
+          },
+          body:
+            JSON.stringify(data)
+        });
+        const data = await res.json();
+        if(res.ok){
+          alert('Success');
+        }
+      } catch (error) {
+        console.log("error", error);
+        alert('Ups reservasi gagal');
+      }
     });
   </script>
 
