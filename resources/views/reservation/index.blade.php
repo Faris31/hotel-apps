@@ -27,9 +27,9 @@
                         @foreach ($datas as $index => $data )
                         <tr class="text-center align-content-center">
                             <td>{{$index += 1 }}</td>
-                            <td>{{$data->guest_name}}</td>
+                            <td>{{$data->room->name}}</td>
                             <td>{{$data->reservation_number}}</td>
-                            <td>
+                            <td align="left">
                                 <small>
                                     Nama : {{$data->guest_name}}
                                     <br>
@@ -40,7 +40,7 @@
                             </td>
                             <td>{{$data->guest_checkin}}</td>
                             <td>{{$data->guest_checkout}}</td>
-                            <td>{{$data->isReserve}}</td>
+                           <td><span class="{{ $data->isReserved_class }}">{{ $data->isReserved_text }}</span></td>
                             <td>
                                 <a href="{{route('reservation.edit', $data->id)}}" class="btn btn-success">Edit</a>
                                 <form action="{{route('reservation.destroy', $data->id)}}" method="post" class="d-inline">

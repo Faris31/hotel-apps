@@ -13,14 +13,17 @@
                 @endforeach
                     
                 <h3 class="card-title">{{ $title ?? '' }}</h3>
-                <form action="{{ route('reservation.store') }}" method="post">
+                <form action="{{ route('reservation.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-lg-6">
+                         <div class="col-md-12">
                             <div class="mb-3">
-                                <label for="reservation_number" class="form-label">Nomor Reservation *</label>
-                                <input type="text" class="form-control" name="reservation_number" placeholder="silahkan masukan nama tamu" required>
+                                <label for="" class="form-label"> No Reservasi</label>
+                                <input type="text" class="form-control" name="reservation_number"
+                                    placeholder="Masukkan Nama Tamu" value="{{ $reservation_number ?? '' }}" readonly>
                             </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="guest_name" class="form-label">Nama Tamu *</label>
                                 <input type="text" class="form-control" name="guest_name" placeholder="silahkan masukan nama tamu" required>
@@ -131,6 +134,32 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="mb-3">Reservation Success</h4>
+        <p class="mb-4 text-muted">
+            Nomor Reservation : <strong id="reservationNumber">#</strong>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">
+           <i class="bi bi-print"></i> Print Confirmation
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection
